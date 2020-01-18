@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+.DS_Store
+*.swp
+
+content/
+docker-assets/
+localdb/

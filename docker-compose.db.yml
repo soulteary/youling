@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  db:
+    image: mysql:5.7
+    container_name: ghost-db
+    ports:
+      - 13306:3306
+    networks:
+      - traefik
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ghost
+    volumes:
+      - ./localdb:/var/lib/mysql
+
+networks:
+  traefik:
+    external: true

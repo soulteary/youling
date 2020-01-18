@@ -1,0 +1,8 @@
+version: '3'
+services:
+
+  build-ghost-assets:
+    image: soulteary/ghost:3.3.0
+    container_name: ghost-assets
+    volumes:
+      - ./patches/ghost-assets/loop.js:/Ghost/index.js

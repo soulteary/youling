@@ -1,0 +1,5 @@
+content/
+docker-assets/
+localdb/
+docker-compose*.yml
+*.sh

@@ -1,0 +1,44 @@
+version: "3.6"
+
+services:
+
+  www-ghost:
+    image: ghost:3.3.0
+    expose:
+      - 2368
+    environment:
+      url: https://soulteary.com
+      database__client: mysql
+      database__connection__host: ghost-db
+      database__connection__user: root
+      database__connection__password: ghost
+      database__connection__database: ghost
+      NODE_ENV: production
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./docker-assets/built:/var/lib/ghost/versions/3.3.0/core/built:ro
+      - ./docker-assets/admin-views:/var/lib/ghost/current/core/server/web/admin/views:ro
+      - ./config.production.json:/var/lib/ghost/config.production.json:ro
+      - ./content/adapters:/var/lib/ghost/versions/3.3.0/content/adapters
+      - ./content/apps:/var/lib/ghost/versions/3.3.0/content/apps
+      - ./content/images:/var/lib/ghost/versions/3.3.0/content/images
+      - ./content/logs:/var/lib/ghost/content/logs
+      - ./content/settings:/var/lib/ghost/versions/3.3.0/content/settings
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=2368"
+      - "traefik.frontend.rule=Host:soulteary.com"
+      - "traefik.frontend.entryPoints=https,http"
+    extra_hosts:
+      - "soulteary.com:127.0.0.1"
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "100m"
+
+networks:
+  traefik:
+    external: true
