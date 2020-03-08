@@ -3,7 +3,7 @@ version: "3.6"
 services:
 
   www-ghost:
-    image: ghost:3.3.0
+    image: ghost:3.9.0-alpine
     expose:
       - 2368
     environment:
@@ -17,14 +17,14 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - ./docker-assets/built:/var/lib/ghost/versions/3.3.0/core/built:ro
+      - ./docker-assets/built:/var/lib/ghost/versions/current/core/built:ro
       - ./docker-assets/admin-views:/var/lib/ghost/current/core/server/web/admin/views:ro
       - ./config.production.json:/var/lib/ghost/config.production.json:ro
-      - ./content/adapters:/var/lib/ghost/versions/3.3.0/content/adapters
-      - ./content/apps:/var/lib/ghost/versions/3.3.0/content/apps
-      - ./content/images:/var/lib/ghost/versions/3.3.0/content/images
+      - ./content/adapters:/var/lib/ghost/versions/current/content/adapters
+      - ./content/apps:/var/lib/ghost/versions/current/content/apps
+      - ./content/images:/var/lib/ghost/versions/current/content/images
       - ./content/logs:/var/lib/ghost/content/logs
-      - ./content/settings:/var/lib/ghost/versions/3.3.0/content/settings
+      - ./content/settings:/var/lib/ghost/versions/current/content/settings
     networks:
       - traefik
     labels:
