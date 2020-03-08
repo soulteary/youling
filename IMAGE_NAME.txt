@@ -1,1 +1,1 @@
-soulteary/ghost:3.3.0
+soulteary/ghost-assets-builder:3.9.0

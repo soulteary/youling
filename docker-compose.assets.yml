@@ -2,7 +2,7 @@ version: '3'
 services:
 
   build-ghost-assets:
-    image: soulteary/ghost:3.3.0
+    image: soulteary/ghost-assets-builder:3.9.0
     container_name: ghost-assets
     volumes:
       - ./patches/ghost-assets/loop.js:/Ghost/index.js
